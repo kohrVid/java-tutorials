@@ -7,6 +7,9 @@
   <version>1.0-SNAPSHOT</version>
   <name>sampleRestApp Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <properties>
+    <jetty.http.port>9999</jetty.http.port>
+  </properties>
 
   <repositories>
     <repository>
@@ -64,6 +67,17 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.2.1.v20140609</version>
+        <configuration>
+          <httpConnector>
+            <!--host>localhost</host-->
+            <port>9999</port>
+          </httpConnector>
         </configuration>
       </plugin>
     </plugins>
