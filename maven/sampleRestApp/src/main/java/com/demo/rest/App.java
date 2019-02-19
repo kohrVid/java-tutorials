@@ -10,7 +10,11 @@ import com.demo.rest.service.UserService;
 @ApplicationPath("/")
 public class App extends Application {
   @SuppressWarnings("unchecked")
+  @Override
   public Set<Class <?>> getClasses()  {
-    return new HashSet<Class <?>>(Arrays.asList(UserService.class));
+    Set<Class<?>> classes = new HashSet<Class<?>>();
+    classes.add(UserService.class);
+    return classes;
+    //return new HashSet<Class <?>>(Arrays.asList(UserService.class));
   }
 }

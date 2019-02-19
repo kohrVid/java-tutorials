@@ -47,6 +47,20 @@
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-multipart-provider</artifactId>
       <version>2.3.1.GA</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-servlet-initializer</artifactId>
+      <version>3.0.19.Final</version>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <groupId>org.jboss.resteasy</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -58,7 +72,11 @@
 
   <build>
     <finalName>sampleRestApp</finalName>
-
+    <resources>
+      <resource>
+        <directory>${basedir}/java/com/demo/rest</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -78,6 +96,10 @@
             <!--host>localhost</host-->
             <port>9999</port>
           </httpConnector>
+          <scanIntervalSeconds>10</scanIntervalSeconds>
+          <webApp>
+            <contextPath>/sampleRestApp</contextPath>
+          </webApp>
         </configuration>
       </plugin>
     </plugins>
